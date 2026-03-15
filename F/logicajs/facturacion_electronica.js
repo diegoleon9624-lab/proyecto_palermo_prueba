@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function buscarProductoPorCodigo(codigo) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/productos?codigo=${codigo}`,
+        `/api/productos?codigo=${codigo}`,
       );
       const data = await res.json();
 
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (texto.length < 2) return;
 
     const res = await fetch(
-      `http://localhost:3000/api/productos?nombre=${texto}`,
+      `/api/productos?nombre=${texto}`,
     );
     const data = await res.json();
 
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function buscarClientePorDocumento(documento) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/clientes?documento=${documento}`,
+        `/api/clientes?documento=${documento}`,
       );
       const data = await res.json();
 
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (texto.length < 2) return;
 
     const res = await fetch(
-      `http://localhost:3000/api/clientes?nombre=${texto}`,
+      `/api/clientes?nombre=${texto}`,
     );
     const data = await res.json();
 

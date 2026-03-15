@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectCategoria = inputs[2];
 
   function cargarInventario(query = "") {
-    fetch(`http://localhost:3000/api/productos${query}`)
+    fetch(`/api/productos${query}`)
       .then((res) => res.json())
       .then((productos) => {
         tbody.innerHTML = "";
@@ -99,7 +99,7 @@ document.addEventListener("click", async (e) => {
 
     if (!nombre) return;
 
-    await fetch(`http://localhost:3000/api/productos/${id}`, {
+    await fetch(`/api/productos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -122,11 +122,11 @@ document.addEventListener("click", async (e) => {
 
     if (!confirm("¿Seguro que deseas eliminar este producto?")) return;
 
-    await fetch(`http://localhost:3000/api/productos/${id}`, {
+    await fetch(`/api/productos/${id}`, {
       method: "DELETE",
     });
 
-    const res = await fetch(`http://localhost:3000/api/productos/${id}`, {
+    const res = await fetch(`/api/productos/${id}`, {
       method: "DELETE",
     });
 

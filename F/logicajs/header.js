@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   async function cargarNumeroFactura() {
     try {
-      const response = await fetch("http://localhost:3000/api/facturas/next");
+      const response = await fetch("/api/facturas/next");
       const data = await response.json();
 
       if (data.ok) {

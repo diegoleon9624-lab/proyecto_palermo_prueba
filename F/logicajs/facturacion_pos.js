@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let idFactura = null;
 
     try {
-      const res = await fetch("http://localhost:3000/api/facturas", {
+      const res = await fetch("/api/facturas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 🖨 ABRIR PDF AUTOMÁTICO (TÉRMICA)
 
       window.open(
-        `http://localhost:3000/api/facturas/${idFactura}/pdf` +
+        `/api/facturas/${idFactura}/pdf` +
           `?formato=termica` +
           `&metodo=${metodo}` +
           `&efectivo=${efectivo}` +
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function buscarProductoPorCodigo(codigo) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/productos?codigo=${codigo}`,
+        `/api/productos?codigo=${codigo}`,
       );
       const data = await res.json();
 
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!texto) return;
 
     const res = await fetch(
-      `http://localhost:3000/api/productos?nombre=${texto}`,
+      `/api/productos?nombre=${texto}`,
     );
     const data = await res.json();
 

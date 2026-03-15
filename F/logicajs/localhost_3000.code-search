@@ -1,0 +1,125 @@
+# Query: localhost:3000
+# ContextLines: 1
+
+27 results - 13 files
+
+F\logicajs\busqueda.js:
+  115      const res = await fetch(
+  116:       `/api/registros/${tipo}/${id}`
+  117      );
+
+  202    try {
+  203:     const res = await fetch("/api/busqueda/buscar", {
+  204        method: "POST",
+
+  277    try {
+  278:     const res = await fetch("/api/busqueda/actualizar", {
+  279        method: "PUT",
+
+F\logicajs\consultasventas.js:
+  20  
+  21:       const url = `api/facturas?${params.toString()}`;
+  22  
+
+F\logicajs\eliminar.js:
+   83      const res = await fetch(
+   84:       `/api/registros/${tipo}/${id}`
+   85      );
+
+  139    try {
+  140:     const res = await fetch("/api/busqueda/buscar", {
+  141        method: "POST",
+
+  187      const res = await fetch(
+  188:       `/api/eliminar/${tipoActual}/${id}`,
+  189        { method: "DELETE" }
+
+F\logicajs\entrada-producto.js:
+   32    try {
+   33:     const res = await fetch("/api/productos");
+   34      productos = await res.json();
+
+  180    const res = await fetch(
+  181:     `/api/productos/stock/${productoSeleccionado.id_producto}`,
+  182      {
+
+F\logicajs\facturacion_electronica.js:
+   41        const res = await fetch(
+   42:         `/api/productos?codigo=${codigo}`,
+   43        );
+
+  276      const res = await fetch(
+  277:       `/api/productos?nombre=${texto}`,
+  278      );
+
+  314        const res = await fetch(
+  315:         `/api/clientes?documento=${documento}`,
+  316        );
+
+  407      const res = await fetch(
+  408:       `/api/clientes?nombre=${texto}`,
+  409      );
+
+F\logicajs\facturacion_pos.js:
+  173      try {
+  174:       const res = await fetch("/api/facturas", {
+  175          method: "POST",
+
+  208        window.open(
+  209:         `/api/facturas/${idFactura}/pdf` +
+  210            `?formato=termica` +
+
+  305        const res = await fetch(
+  306:         `/api/productos?codigo=${codigo}`,
+  307        );
+
+  337      const res = await fetch(
+  338:       `/api/productos?nombre=${texto}`,
+  339      );
+
+F\logicajs\header.js:
+  55      try {
+  56:       const response = await fetch("/api/facturas/next");
+  57        const data = await response.json();
+
+F\logicajs\inventario.js:
+   15    function cargarInventario(query = "") {
+   16:     fetch(`/api/productos${query}`)
+   17        .then((res) => res.json())
+
+  101  
+  102:     await fetch(`/api/productos/${id}`, {
+  103        method: "PUT",
+
+  124  
+  125:     await fetch(`/api/productos/${id}`, {
+  126        method: "DELETE",
+
+  128  
+  129:     const res = await fetch(`/api/productos/${id}`, {
+  130        method: "DELETE",
+
+F\logicajs\login.js:
+  34      try {
+  35:       const response = await fetch("/api/login", {
+  36          method: "POST",
+
+F\logicajs\registro_usuario.js:
+  62      try {
+  63:       const res = await fetch("/api/usuarios", {
+  64          method: "POST",
+
+F\logicajs\registroClientes.js:
+  70      try {
+  71:       const res = await fetch("/api/clientes", {
+  72          method: "POST",
+
+F\logicajs\registros.js:
+  123    try {
+  124:     const res = await fetch("/api/registros", {
+  125        method: "POST",
+
+F\logicajs\registrosproductos.js:
+  17      try {
+  18:       const res = await fetch("/api/productos", {
+  19          method: "POST",

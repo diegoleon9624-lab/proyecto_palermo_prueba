@@ -30,7 +30,7 @@ let stockActualNumerico = 0;
 // ===============================
 async function cargarProductos() {
   try {
-    const res = await fetch("http://localhost:3000/api/productos");
+    const res = await fetch("/api/productos");
     productos = await res.json();
   } catch (error) {
     console.error("Error cargando productos:", error);
@@ -178,7 +178,7 @@ btnGuardar.addEventListener("click", async () => {
 
   // SEGUNDO CLIC → GUARDAR EN BD
   const res = await fetch(
-    `http://localhost:3000/api/productos/stock/${productoSeleccionado.id_producto}`,
+    `/api/productos/stock/${productoSeleccionado.id_producto}`,
     {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

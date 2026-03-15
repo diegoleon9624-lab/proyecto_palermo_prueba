@@ -18,7 +18,7 @@ form.addEventListener("submit", function (e) {
 
       const params = new URLSearchParams(filtros);
 
-      const url = `http://localhost:3000/api/facturas?${params.toString()}`;
+      const url = `/api/facturas?${params.toString()}`;
 
 
   fetch(url)

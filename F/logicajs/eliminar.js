@@ -81,7 +81,7 @@ function mostrarRegistro(registro) {
 async function cargarPorId(tipo, id) {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/registros/${tipo}/${id}`
+      `/api/registros/${tipo}/${id}`
     );
 
     const json = await res.json();
@@ -137,7 +137,7 @@ btnBuscar.addEventListener("click", async () => {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/busqueda/buscar", {
+    const res = await fetch("/api/busqueda/buscar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -185,7 +185,7 @@ btnEliminar.addEventListener("click", async () => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/eliminar/${tipoActual}/${id}`,
+      `/api/eliminar/${tipoActual}/${id}`,
       { method: "DELETE" }
     );
 

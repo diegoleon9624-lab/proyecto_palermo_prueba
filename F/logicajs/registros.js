@@ -121,7 +121,7 @@ async function cargarRegistros() {
   const identificacion = inputBuscar.value.trim();
 
   try {
-    const res = await fetch("http://localhost:3000/api/registros", {
+    const res = await fetch("/api/registros", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
