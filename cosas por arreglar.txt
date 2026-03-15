@@ -1,0 +1,19 @@
+cosas que faltan 
+*pantalla facturacion electronica boton agregar producto no se esconde con el sidebar 
+
+*pantalla entrada o salida de productos el buscar no se esconde con el sidebar 
+
+*pantalla pago de cartera los botones buscar y pago no parecen botones averiguar si lo son 
+
+*pantalla abono a cartera igual que pago cartera botones
+
+*pantalla estado de cuenta igual
+
+*pantalla clientes moros igual 
+
+
+*pantalla datos de la empresa  boton y subir imagen arreglar 
+
+*pantalla  configuracion de dispositivos  botones 
+
+*pantalla copia de seguridad  botones 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="cartera">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>ABONO A CARTERA</p>
+        </div>
+
+        <div class="ac-scope">
+          <div class="ac-card">
+
+            <div class="ac-search">
+              <input
+                type="text"
+                placeholder="Digita el documento del cliente"
+              />
+              <button>Buscar</button>
+            </div>
+
+            <table class="ac-table">
+              <thead>
+                <tr>
+                  <th>Fecha pago</th>
+                  <th>N° Factura</th>
+                  <th>Fecha factura</th>
+                  <th>Valor Factura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>24/01/2026</td>
+                  <td>0001120</td>
+                  <td>15/12/2025</td>
+                  <td>$1.535.263</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="ac-note">
+              El abono se le aplicará a las facturas más antiguas.
+            </p>
+
+            <div class="ac-pay">
+              <input type="text" placeholder="Efectivo" />
+              <input type="text" placeholder="Electrónico" />
+              <input type="text" placeholder="Cambio / Devuelta" />
+            </div>
+
+            <textarea
+              placeholder="Nota"
+              style="width: 100%; height: 60px"
+            ></textarea>
+
+            <button class="ac-btn">ABONO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+
+  </body>
+</html>

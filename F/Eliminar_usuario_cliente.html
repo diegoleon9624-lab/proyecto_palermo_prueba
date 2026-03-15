@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Eliminar</title>
+
+    <!-- Estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <body class="app-body consulta-ventas-body" data-permiso="clientes">
+    <div class="container">
+      <!-- Sidebar -->
+      <div id="sidebar-container"></div>
+
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- Header -->
+        <div id="header-container"></div>
+
+        <!-- TÍTULO GENERAL -->
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>ELIMINAR</p>
+        </div>
+
+        <!-- CONTEXTO DEL MÓDULO -->
+        <div class="modulo-contexto">
+          <h3 id="titulo-modulo">ELIMINAR USUARIOS</h3>
+        </div>
+
+        <div class="uc-form-wrap">
+          <!-- SELECTOR USUARIO / CLIENTE -->
+          <div class="selector-tipo">
+            <select class="uc-input" id="filtro_tipo">
+              <option value="usuario">Usuarios</option>
+              <option value="cliente">Clientes</option>
+            </select>
+          </div>
+
+          <!-- BUSQUEDA -->
+          <div class="uc-busqueda input-search">
+            <input
+              class="uc-input"
+              id="identificacion"
+              placeholder="Digita la cédula"
+            />
+            <button
+              type="button"
+              class="search-icon"
+              id="btnBuscar"
+              aria-label="Buscar"
+            >
+              🔍
+            </button>
+          </div>
+
+          <!-- MENSAJE DE CONFIRMACIÓN -->
+          <p class="uc-warning-text">
+            ¿ESTÁS SEGURO QUE DESEAS ELIMINAR ESTE REGISTRO?
+          </p>
+
+          <!-- DATOS A ELIMINAR -->
+          <div class="uc-confirm-box" id="info-eliminar">
+            <p><b>NOMBRE:</b> —</p>
+            <p><b>IDENTIFICACIÓN:</b> —</p>
+            <p><b>CORREO:</b> —</p>
+            <p><b>ROL / TIPO:</b> —</p>
+          </div>
+
+          <!-- ACCIONES -->
+          <div class="uc-actions">
+            <button type="button" class="uc-btn-main" id="btnLimpiar">
+              LIMPIAR
+            </button>
+            <button type="button" class="uc-btn-main" id="btnEliminar">
+              ELIMINAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS EXISTENTES -->
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+    <!-- JS DE LÓGICA (LO CREAMOS AHORA) -->
+    <script src="logicajs/eliminar.js" defer></script>
+  </body>
+</html>

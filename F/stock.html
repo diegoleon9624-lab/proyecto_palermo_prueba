@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="productos">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>STOCK DE PRODUCTOS</p>
+        </div>
+
+        <!-- ===============================
+   REPORTE DE STOCK (ENCAPSULADO)
+================================ -->
+        <div class="stk-scope">
+          <!-- FILTROS -->
+          <div class="stk-card stk-filtros">
+            <div class="stk-field">
+              <label>Producto:</label>
+              <div class="stk-search">
+                <input type="text" placeholder="Buscar" />
+                <span>🔍</span>
+              </div>
+            </div>
+
+            <div class="stk-field">
+              <label>Categoría:</label>
+              <select>
+                <option>Todas las categorías</option>
+                <option>Cerdo</option>
+                <option>Res</option>
+                <option>Pollo</option>
+                <option>Pescado</option>
+              </select>
+            </div>
+
+            <div class="stk-field stk-btn-wrap">
+              <button class="stk-btn-buscar">BUSCAR</button>
+            </div>
+          </div>
+
+          <!-- TABLA -->
+          <div class="stk-card stk-table-wrap">
+            <table class="stk-table">
+              <thead>
+                <tr>
+                  <th>CÓDIGO</th>
+                  <th>PRODUCTO</th>
+                  <th>CATEGORÍA</th>
+                  <th>STOCK</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Poco stock (deben ir primero) -->
+                <tr>
+                  <td>021</td>
+                  <td>SOLOMITO</td>
+                  <td>RES</td>
+                  <td><span class="stk-badge stk-low">5 KG</span></td>
+                </tr>
+
+                <tr>
+                  <td>031</td>
+                  <td>PECHUGA</td>
+                  <td>POLLO</td>
+                  <td><span class="stk-badge stk-mid">15 KG</span></td>
+                </tr>
+
+                <!-- Stock normal -->
+                <tr>
+                  <td>001</td>
+                  <td>CAÑÓN</td>
+                  <td>CERDO</td>
+                  <td><span class="stk-badge stk-ok">50 KG</span></td>
+                </tr>
+
+                <tr>
+                  <td>041</td>
+                  <td>TRUCHA</td>
+                  <td>PESCADO</td>
+                  <td><span class="stk-badge stk-ok">10 KG</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>

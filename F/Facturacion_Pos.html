@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Facturación POS</title>
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- 🔑 SE AGREGA factura-electronica-body (NO SE ELIMINA app-body) -->
+  <body class="app-body factura-electronica-body" data-permiso="pos">
+    <div id="modo-facturacion" data-factura="true"></div>
+
+    <div class="container">
+      <!-- SIDEBAR CARGADO DINÁMICAMENTE -->
+      <div id="sidebar-container"></div>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+
+        <!-- SECCIÓN DE BIENVENIDA -->
+        <div class="welcome-section">
+          <h2>Bienvenido a InveFact</h2>
+          <p>Sistema de Facturación POS</p>
+        </div>
+
+        <!-- FORMULARIO PARA AGREGAR PRODUCTOS -->
+        <div class="facturacion-container">
+          <h3 class="section-title">Agregar Productos a la Factura</h3>
+
+          <div class="product-form">
+            <div class="form-group">
+              <label for="codigo">Código</label>
+              <input type="text" id="codigo" placeholder="Código producto" />
+            </div>
+
+            <div class="form-group">
+              <label for="producto">Producto</label>
+              <input type="text" id="producto" placeholder="Nombre producto" />
+              <ul id="lista-sugerencias" class="lista-productos"></ul>
+            </div>
+
+            <div class="form-group">
+              <label for="cantidad">Cantidad</label>
+              <input type="number" id="cantidad" min="1" value="1" />
+            </div>
+
+            <div class="form-group">
+              <label for="precio">Precio Unitario</label>
+              <input type="number" id="precio" min="0" step="0.01" />
+            </div>
+
+            <div class="form-group">
+              <label for="unidad">Unidad</label>
+              <select id="unidad">
+                <option value="und">UND</option>
+                <option value="kg">KG</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="subtotal">Subtotal</label>
+              <input type="text" id="subtotal" placeholder="$0" readonly />
+            </div>
+          </div>
+
+          <div class="acciones-agregar">
+            <button type="button" class="btn-agregar" id="btn-agregar">
+              Agregar Producto
+            </button>
+          </div>
+        </div>
+
+        <!-- TABLA DE PRODUCTOS -->
+        <div class="facturacion-container">
+          <h3 class="section-title">Productos en la Factura</h3>
+          <table class="productos-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Unidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="lista-productos"></tbody>
+          </table>
+        </div>
+
+        <!-- PAGO Y TOTALES -->
+        <div class="pago-container">
+          <div class="totales-section">
+            <div class="total-item">
+              <span class="total-label">Subtotal:</span>
+              <span class="total-value" id="subtotal-total">$0</span>
+            </div>
+
+            <div class="total-item total-final">
+              <span class="total-label">TOTAL:</span>
+              <span class="total-value" id="total-final">$0</span>
+            </div>
+          </div>
+
+          <div class="metodo-pago">
+            <h3 class="section-title">Método de Pago</h3>
+
+            <div class="opciones-pago">
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="metodo-pago"
+                  value="efectivo"
+                  checked
+                />
+                <span class="radio-custom"></span>
+                Efectivo
+              </label>
+
+              <label class="radio-option">
+                <input type="radio" name="metodo-pago" value="electronico" />
+                <span class="radio-custom"></span>
+                Electrónico
+              </label>
+
+              <label class="radio-option">
+                <input type="radio" name="metodo-pago" value="mixto" />
+                <span class="radio-custom"></span>
+                Mixto
+              </label>
+            </div>
+
+            <div class="pago-fields" id="pago-fields">
+              <div class="pago-left">
+                <div class="form-group" id="grupo-efectivo">
+                  <label for="efectivo-recibido">Efectivo Recibido</label>
+                  <input type="number" id="efectivo-recibido" min="0" />
+                </div>
+
+                <div class="form-group" id="grupo-electronico">
+                  <label for="monto-electronico">Monto Electrónico</label>
+                  <input type="number" id="monto-electronico" min="0" />
+                </div>
+              </div>
+
+              <div class="form-group" id="grupo-cambio">
+                <label for="cambio">Cambio</label>
+                <input type="text" id="cambio" readonly />
+              </div>
+            </div>
+
+            <button type="button" class="btn-facturar" id="btn-facturar">
+              FACTURAR
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- JS -->
+      <script src="logicajs/loadheader.js" defer></script>
+      <script src="logicajs/loadSidebar.js" defer></script>
+      <script src="logicajs/sidebar.js" defer></script>
+      <script src="logicajs/facturacion_pos.js" defer></script>
+      <script src="logicajs/regresar.js" defer></script>
+      <script src="logicajs/header.js"></script>
+      <script src="logicajs/roles.js"></script>
+      <script src="logicajs/guard.js"></script>
+    </div>
+
+    <!-- ✅ MODAL PROFESIONAL (MISMO ESTILO QUE ELECTRÓNICA) -->
+    <div id="modal-productos" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Buscar producto</h3>
+          <button type="button" id="cerrar-modal">✖</button>
+        </div>
+
+        <input
+          type="text"
+          id="buscar-modal"
+          placeholder="Escriba el nombre del producto"
+        />
+
+        <ul id="lista-modal" class="lista-productos"></ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Facturación Electrónica</title>
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <body class="app-body factura-electronica-body" data-permiso="facturas">
+    <div id="modo-facturacion" data-factura="true"></div>
+
+    <div class="container">
+      <!-- SIDEBAR DINÁMICO -->
+      <div id="sidebar-container"></div>
+
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+
+        <div class="welcome-section">
+          <h2>InveFact</h2>
+          <p>FACTURACIÓN ELECTRÓNICA</p>
+        </div>
+
+        <!-- ===================== -->
+        <!-- DIAN + CLIENTE -->
+        <!-- ===================== -->
+        <div class="facte-head">
+          <!-- DIAN -->
+          <div class="facte-box">
+            <h3 class="section-title">Datos DIAN (simulado)</h3>
+
+            <div class="facte-grid">
+              <div class="form-group">
+                <label for="prefijo">Prefijo</label>
+                <input id="prefijo" type="text" value="FE" />
+              </div>
+
+              <div class="form-group">
+                <label for="resolucion">Resolución</label>
+                <input id="resolucion" type="text" />
+              </div>
+
+              <div class="form-group">
+                <label for="ambiente">Ambiente</label>
+                <select id="ambiente">
+                  <option value="PRODUCCION">PRODUCCIÓN</option>
+                  <option value="PRUEBAS">PRUEBAS</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="tipo-doc">Tipo Documento</label>
+                <select id="tipo-doc">
+                  <option value="FACTURA_ELECTRONICA">
+                    FACTURA ELECTRÓNICA
+                  </option>
+                  <option value="NOTA_CREDITO">NOTA CRÉDITO</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="cufe">CUFE (auto)</label>
+                <input id="cufe" type="text" readonly />
+              </div>
+
+              <div class="form-group">
+                <label for="email-envio">Email envío</label>
+                <input id="email-envio" type="email" />
+              </div>
+            </div>
+          </div>
+
+          <!-- CLIENTE -->
+          <div class="facte-box">
+            <h3 class="section-title">Datos del Cliente</h3>
+
+            <div class="facte-grid">
+              <div class="form-group">
+                <label for="doc-cliente">Cédula / NIT</label>
+                <input id="doc-cliente" type="text" />
+              </div>
+
+              <div class="form-group">
+                <label for="nombre-cliente">Nombre</label>
+                <input id="nombre-cliente" type="text" />
+              </div>
+
+              <div class="form-group">
+                <label for="tel-cliente">Teléfono</label>
+                <input id="tel-cliente" type="text" />
+              </div>
+
+              <div class="form-group">
+                <label for="dir-cliente">Dirección</label>
+                <input id="dir-cliente" type="text" />
+              </div>
+
+              <div class="form-group">
+                <label for="correo-cliente">Correo</label>
+                <input id="correo-cliente" type="email" />
+              </div>
+
+              <!-- 👇 ÚNICO CAMBIO AQUÍ -->
+              <div class="form-group">
+                <label for="tipo-cliente">Tipo de cliente</label>
+                <input
+                  id="tipo-cliente"
+                  type="text"
+                  readonly
+                  placeholder="CONTADO / CRÉDITO"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================== -->
+        <!-- PRODUCTOS -->
+        <!-- ===================== -->
+        <div class="product-container">
+          <h3 class="section-title">Agregar Producto</h3>
+
+          <div class="product-form">
+            <div class="form-group">
+              <label for="codigo-producto">Código</label>
+              <input type="text" id="codigo-producto" />
+            </div>
+
+            <div class="form-group">
+              <label for="nombre-producto">Producto</label>
+              <input type="text" id="nombre-producto" />
+            </div>
+
+            <div class="form-group">
+              <label for="cantidad-producto">Cantidad</label>
+              <input type="number" id="cantidad-producto" min="1" />
+            </div>
+
+            <div class="form-group">
+              <label for="precio-unitario">Precio Unitario</label>
+              <input type="number" id="precio-unitario" min="0" step="0.01" />
+            </div>
+
+            <div class="form-group">
+              <label for="unidad-producto">Unidad</label>
+              <select id="unidad-producto">
+                <option value="UND">UND</option>
+                <option value="KG">KG</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="subtotal">Subtotal</label>
+              <input type="text" id="subtotal" readonly />
+            </div>
+          </div>
+
+          <div class="acciones-agregar">
+            <button type="button" class="btn-agregar" id="btnAgregarProducto">
+              Agregar Producto
+            </button>
+          </div>
+        </div>
+
+        <!-- ===================== -->
+        <!-- TABLA PRODUCTOS -->
+        <!-- ===================== -->
+        <div class="facturacion-container">
+          <h3 class="section-title">Productos en la Factura</h3>
+
+          <table class="productos-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Unidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="lista-productos"></tbody>
+          </table>
+        </div>
+
+        <!-- ===================== -->
+        <!-- PAGO + TOTALES -->
+        <!-- ===================== -->
+        <div class="pago-container">
+          <div class="totales-section">
+            <div class="total-item">
+              <span class="total-label">Subtotal:</span>
+              <span class="total-value" id="subtotal-total">$0</span>
+            </div>
+
+            <div class="total-item total-final">
+              <span class="total-label">TOTAL:</span>
+              <span class="total-value" id="total-final">$0</span>
+            </div>
+          </div>
+
+          <div class="metodo-pago">
+            <h3 class="section-title">Pago</h3>
+
+            <div class="facte-pago-top">
+              <div class="facte-radio">
+                <label>
+                  <input
+                    type="radio"
+                    name="tipoPago"
+                    value="EFECTIVO"
+                    checked
+                  />
+                  Efectivo
+                </label>
+                <label>
+                  <input type="radio" name="tipoPago" value="ELECTRONICO" />
+                  Electrónico
+                </label>
+                <label>
+                  <input type="radio" name="tipoPago" value="MIXTO" />
+                  Mixto
+                </label>
+              </div>
+
+              <div class="facte-plazo">
+                <label for="plazo-dias">Plazo (días)</label>
+                <input type="number" id="plazo-dias" min="0" value="0" />
+              </div>
+            </div>
+
+            <div class="facte-pago-grid" id="pago-efectivo">
+              <div class="form-group">
+                <label for="monto-efectivo">Monto Efectivo</label>
+                <input type="number" id="monto-efectivo" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="cambio">Cambio</label>
+                <input type="text" id="cambio" readonly />
+              </div>
+            </div>
+
+            <div
+              class="facte-pago-grid"
+              id="pago-electronico"
+              style="display: none"
+            >
+              <div class="form-group">
+                <label for="medio-electronico">Medio</label>
+                <select id="medio-electronico">
+                  <option value="TRANSFERENCIA">TRANSFERENCIA</option>
+                  <option value="TARJETA">TARJETA</option>
+                  <option value="PSE">PSE</option>
+                  <option value="NEQUI_DAVIPLATA">NEQUI / DAVIPLATA</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ref-electronica">Referencia</label>
+                <input type="text" id="ref-electronica" />
+              </div>
+
+              <div class="form-group">
+                <label for="monto-electronico">Monto Electrónico</label>
+                <input type="number" id="monto-electronico" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="observacion">Observación</label>
+                <textarea id="observacion"></textarea>
+              </div>
+            </div>
+
+            <div class="facte-actions">
+              <button type="button" class="btn-facturar" id="btnEnviarDian">
+                FACTURAR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL PRODUCTOS -->
+    <div id="modal-productos" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Buscar producto</h3>
+          <button id="cerrar-modal-productos">✖</button>
+        </div>
+        <input
+          type="text"
+          id="buscar-producto-nombre"
+          placeholder="Escribe el nombre del producto..."
+        />
+        <ul id="lista-productos-modal"></ul>
+      </div>
+    </div>
+
+    <!-- MODAL CLIENTES -->
+    <div id="modal-clientes" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Buscar cliente</h3>
+          <button id="cerrar-modal-clientes">✖</button>
+        </div>
+        <input
+          type="text"
+          id="buscar-cliente-nombre"
+          placeholder="Escribe el nombre del cliente..."
+        />
+        <ul id="lista-clientes-modal"></ul>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/facturacion_electronica.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+
+  </body>
+</html>

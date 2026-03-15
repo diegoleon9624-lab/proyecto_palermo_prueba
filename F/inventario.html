@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="productos">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>INVENTARIO DE PRODUCTOS</p>
+        </div>
+        <!-- INVENTARIO DE PRODUCTOS -->
+        <div class="inv-card">
+          <!-- FILTROS -->
+          <div class="inv-filters">
+            <div class="inv-field">
+              <label>Código</label>
+              <input type="text" class="inv-input" placeholder="CÓDIGO" />
+            </div>
+
+            <div class="inv-field">
+              <label>Producto</label>
+              <input
+                type="text"
+                class="inv-input"
+                placeholder="NOMBRE PRODUCTO"
+              />
+            </div>
+
+            <div class="inv-field">
+              <label>Categoría</label>
+              <select class="inv-input">
+                <option value="">TODAS</option>
+                <option>RES</option>
+                <option>CERDO</option>
+                <option>POLLO</option>
+                <option>PESCADO</option>
+                <option>CHARCUTERIA</option>
+                <option>OTROS</option>
+              </select>
+            </div>
+
+            <button class="inv-btn-buscar">Buscar</button>
+          </div>
+
+          <!-- TABLA -->
+          <div class="inv-table-wrap">
+            <table class="inv-table">
+              <thead>
+                <tr>
+                  <th>CÓDIGO</th>
+                  <th>PRODUCTO</th>
+                  <th>CATEGORÍA</th>
+                  <th>UNIDAD</th>
+                  <th>STOCK</th>
+                  <th>PRECIO VENTA</th>
+                  <th>ESTADO</th>
+                  <th>ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody id="inv-tbody">
+                <!-- JS render -->
+                <tr>
+                  <td>001</td>
+                  <td>CAÑON</td>
+                  <td>RES</td>
+                  <td>KG</td>
+                  <td>15</td>
+                  <td>$25.000</td>
+                  <td class="inv-activo">ACTIVO</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/inventario.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>

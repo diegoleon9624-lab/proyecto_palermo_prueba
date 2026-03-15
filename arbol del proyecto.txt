@@ -1,0 +1,87 @@
+PROYECTO_PALERMO_WEB/
+├── .vscode/
+│   └── config/
+│       └── db.js
+├── node_modules/
+├── routes/
+│   ├── busqueda.routes.js
+│   ├── clientes.routes.js
+│   ├── eliminar.routes.js
+│   ├── facturas.pdf.routes.js
+│   ├── facturas.routes.js
+│   ├── login.routes.js
+│   ├── productos.routes.js
+│   ├── registros.routes.js
+│   └── usuarios.routes.js
+│ ├──pdf/
+     ├── factura_template.html
+├── .env
+├── package-lock.json
+├── package.json
+├── server.js
+├── components/
+│   ├── encabezado.html
+│   └── sidebar.html
+├── icons/
+│   ├── imagenes/
+│   │   └── 323449725_6366096463419266_70882...
+│   ├── logo_tecnolion.png
+│   ├── logo1.png
+│   ├── logo2.png
+│   └── logo6.png
+├── logicajs/
+│   ├── busqueda.js
+│   ├── consultasventas.js
+│   ├── eliminar.js
+│   ├── entrada-producto.js
+│   ├── facturación_electronica.js
+│   ├── facturación_pos.js
+│   ├── guard.js
+│   ├── header.js
+│   ├── inventario.js
+│   ├── loadheader.js
+│   ├── loadSidebar.js
+│   ├── login.js
+│   ├── menu.js
+│   ├── registro_usuario.js
+│   ├── registroClientes.js
+│   ├── registros.js
+│   ├── registrosproductos.js
+│   ├── regresar.js
+│   ├──roles.js
+│   ├── sidebar.js
+│   └── ... (otros archivos .js en la lista)
+├── abono_cartera.html
+├── clientes_morosos.html
+├── configuracion_dispositivos.html
+├── Consulta_de_ventas.html
+├── copia_seguridad.html
+├── datos_empresa.html
+├── Eliminar_usuario_cliente.html
+├── entrada-salida-producto.html
+├── estado_cuentas.html
+├── estilosD1.css
+├── Facturación_electronica.html
+├── Facturación_Pos.html
+├── historial_pagos.html
+├── index.html
+├── inventario.html
+├── Menu_principal.html
+├── Modificar_usuario_cliente.html
+├── pago_cartera.html
+├── registro_clientes.html
+├── Registro_productos.html
+├── registro_usuario.html
+├── reporte_ventas_diarias.html
+├── reports_contables.html
+├── stock.html
+├── ventas_por_productos.html
+└── vista_usuario_clientes.html
+
+
+
+
+este es el resumen maestro .
+
+
+

@@ -1,0 +1,3199 @@
+/* ===== ESTILOS GENERALES (aplican a todas las páginas) ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== ESTILOS PARA EL LOGIN (body con clase login-body) ===== */
+body.login-body {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos del formulario de login */
+body.login-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+body.login-body .center-wrap {
+  background-color: #e6e6e6;
+  border: 3px solid black;
+  border-radius: 12px;
+  padding: 50px 60px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+body.login-body .imagen_principal {
+  width: 300px;
+  max-width: 90%;
+  border-radius: 10px;
+  display: block;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+body.login-body .titulo_inicio {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #222;
+  font-family: fantasy;
+}
+
+body.login-body .recordar_o_registrar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+}
+
+body.login-body .link {
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.login-body .link:hover {
+  color: #a50000;
+  text-decoration: underline;
+}
+
+body.login-body .campo {
+  width: 320px;
+  padding: 14px 18px;
+  background-color: #e0e0e0;
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+body.login-body .campo:focus {
+  border-color: #a50000;
+  background-color: #f2f2f2;
+}
+
+body.login-body .boton-animado {
+  position: relative;
+  padding: 12px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #555;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+body.login-body .boton-animado:hover {
+  background-color: #c40000;
+}
+
+body.login-body .boton-animado.brillo {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+body.login-body .boton-animado:hover.brillo {
+  left: 125%;
+}
+
+body.login-body .texto {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== ESTILOS PARA LA APLICACIÓN (body con clase app-body) ===== */
+body.app-body {
+  margin: 0;
+  background-color: #ffffff;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Container principal para la aplicación */
+body.app-body .container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+body.app-body .sidebar {
+  width: 220px;
+  background-color: #bfbfbf;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 80px;   /* espacio extra para que no se vea cortado */
+}
+
+/* Logo */
+body.app-body .logo {
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 2px solid #a0a0a0;
+}
+
+body.app-body .logo-img {
+  width: 80px;
+  border-radius: 10px;
+}
+
+body.app-body .logo h2 {
+  color: #222;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+/* Menú */
+body.app-body .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+body.app-body .menu .item {
+  position: relative;
+}
+
+body.app-body .menu a {
+  display: flex;
+  padding: 14px 18px;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid #a0a0a0;
+  align-items: center;
+  gap: 15px;
+}
+
+body.app-body .menu a:hover {
+  background-color: #c40000;
+  color: white;
+}
+
+/* === Submenús base (NO hover, se controlan por .open + animación) === */
+body.app-body .submenu {
+  list-style: none;
+  background-color: #d9d9d9;
+  margin: 0;
+  border-left: 3px solid #c40000;
+
+  /* animación (cerrado por defecto) */
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+body.app-body .submenu li a {
+  padding: 10px 30px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+/* Botón salir */
+body.app-body .salir {
+  background-color: #a50000;
+  margin-top: auto;
+}
+
+body.app-body .salir a {
+  color: white;
+  text-align: center;
+}
+
+body.app-body .salir a:hover {
+  background-color: #800000;
+}
+
+/* Contenido principal (para Menu_principal.html) */
+body.app-body .contenido {
+  margin-left: 240px;
+  padding: 40px;
+  flex: 1;
+  text-align: center;
+}
+
+/* Main content (para Pruebas.html) */
+body.app-body .main-content {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  width: calc(100% - 220px);
+}
+
+/* ENCABEZADO CON INFORMACIÓN DE LA EMPRESA */
+body.app-body .header {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body.app-body .header-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+body.app-body .info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+body.app-body .info-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+body.app-body .info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+body.app-body .logo-empresa {
+  width: 80px;
+  height: 80px;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #bfbfbf;
+}
+
+body.app-body .logo-empresa .logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+/* SECCIÓN DE BIENVENIDA */
+body.app-body .welcome-section {
+  background: linear-gradient(135deg, #bfbfbf, #a0a0a0);
+  color: #222;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 2px solid black;
+}
+
+body.app-body .welcome-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+body.app-body .welcome-section p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* CONTENEDORES DE FACTURACIÓN */
+body.app-body .facturacion-container {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body.app-body .section-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #bfbfbf;
+}
+
+/* FORMULARIO DE PRODUCTOS */
+body.app-body .product-form {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+body.app-body .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+body.app-body .form-group label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+
+/* Campos de entrada */
+body.app-body .product-form input, 
+body.app-body .product-form select {
+  padding: 10px;
+  border: 2px solid #bdbdbd;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+body.app-body .product-form input:focus, 
+body.app-body .product-form select:focus {
+  outline: none;
+  border-color: #a50000;
+  background-color: #f2f2f2;
+}
+
+body.app-body .product-form input[readonly] {
+  background-color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+/* BOTÓN AGREGAR PRODUCTO */
+body.app-body .btn-agregar {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+/* ===== CENTRAR BOTÓN AGREGAR PRODUCTO ===== */
+body.app-body .acciones-agregar {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+
+body.app-body .btn-agregar:hover {
+  background-color: #c40000;
+}
+
+/* TABLA DE PRODUCTOS */
+body.app-body .productos-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 2px solid #bfbfbf;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+body.app-body .productos-table th {
+  background-color: #bfbfbf;
+  color: #222;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: 2px solid #a0a0a0;
+}
+
+body.app-body .productos-table td {
+  padding: 12px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 14px;
+  background-color: white;
+}
+
+body.app-body .productos-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+body.app-body .btn-eliminar {
+  background-color: #a50000;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+body.app-body .btn-eliminar:hover {
+  background-color: #800000;
+}
+
+/* SECCIÓN DE PAGO */
+body.app-body .pago-container {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body.app-body .totales-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.app-body .total-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+body.app-body .total-final {
+  border-top: 2px solid #bfbfbf;
+  border-bottom: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+
+body.app-body .total-label {
+  font-weight: bold;
+  color: #222;
+}
+
+body.app-body .total-value {
+  font-weight: bold;
+  color: #222;
+}
+
+/* MÉTODOS DE PAGO */
+body.app-body .metodo-pago {
+  display: flex;
+  flex-direction: column;
+}
+
+body.app-body .opciones-pago {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+body.app-body .radio-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+body.app-body .radio-option input {
+  display: none;
+}
+
+body.app-body .radio-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #bdbdbd;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  background-color: #e0e0e0;
+}
+
+body.app-body .radio-option input:checked + .radio-custom {
+  border-color: #a50000;
+  background-color: #a50000;
+}
+
+body.app-body .radio-option input:checked + .radio-custom::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body.app-body .efectivo-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* BOTÓN FACTURAR */
+body.app-body .btn-facturar {
+  grid-column: 1 / -1;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+body.app-body .btn-facturar:hover {
+  background-color: #c40000;
+}
+
+/* EFECTO BRILLO PARA BOTONES */
+body.app-body .btn-agregar::after, 
+body.app-body .btn-facturar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+body.app-body .btn-agregar:hover::after, 
+body.app-body .btn-facturar:hover::after {
+  left: 125%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  body.app-body .product-form {
+      grid-template-columns: 1fr 1fr;
+  }
+
+  body.app-body .pago-container {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  body.app-body .main-content {
+      margin-left: 0;
+      padding: 10px;
+      width: 100%;
+  }
+
+  body.app-body .header-info {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  body.app-body .product-form {
+      grid-template-columns: 1fr;
+  }
+
+  body.app-body .opciones-pago {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  body.app-body .efectivo-section {
+      grid-template-columns: 1fr;
+  }
+
+  body.app-body .header {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+  }
+}
+
+/* === EFECTO DE CONTRACCIÓN DE SIDEBAR (FIX REAL) === */
+
+/* El que se encoge es el SIDEBAR, no el body */
+body.app-body.sidebar-minimizada .sidebar {
+  width: 60px;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Ocultar textos */
+body.app-body.sidebar-minimizada .menu a {
+  font-size: 0;
+  padding: 14px 10px;
+}
+
+/* Iconos centrados */
+body.app-body.sidebar-minimizada .menu a img,
+body.app-body.sidebar-minimizada .menu a .iconos_barra {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+/* Logo reducido */
+body.app-body.sidebar-minimizada .logo h2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.app-body.sidebar-minimizada .logo-img {
+  width: 50px;
+}
+
+/* Hover expande */
+body.app-body.sidebar-minimizada .sidebar:hover {
+  width: 220px;
+}
+
+body.app-body.sidebar-minimizada .sidebar:hover .menu a {
+  font-size: 1rem;
+  padding: 14px 18px;
+}
+
+body.app-body.sidebar-minimizada .sidebar:hover .menu a img,
+body.app-body.sidebar-minimizada .sidebar:hover .menu a .iconos_barra {
+  margin-left: 0;
+  margin-right: 15px;
+}
+
+body.app-body.sidebar-minimizada .sidebar:hover .logo h2 {
+  opacity: 1;
+}
+
+body.app-body.sidebar-minimizada .sidebar:hover .logo-img {
+  width: 80px;
+}
+
+/* Contenido principal */
+body.app-body.sidebar-minimizada .main-content,
+body.app-body.sidebar-minimizada .contenido {
+  margin-left: 80px;
+  transition: margin-left 0.3s ease;
+}
+
+body.app-body.sidebar-minimizada .sidebar:hover ~ .main-content,
+body.app-body.sidebar-minimizada .sidebar:hover ~ .contenido {
+  margin-left: 220px;
+  width: calc(100% - 220px);
+}
+
+
+a img {
+  vertical-align: middle;
+  margin-right: 15px;
+  width: 35px;
+  height: 35px;
+}
+
+body.app-body.sidebar-minimizada:hover .menu a {
+  justify-content: flex-start;
+}
+
+body.app-body.sidebar-minimizada:hover .menu a img {
+  margin-right: 15px;
+}
+
+.logoempresa {
+  width: 400px;
+  height: 400px;
+  opacity: 0.2;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*APARTIR DE ESTE CAMPO SON ESTILOS PARA REGISTRO*/
+body.body-registro{
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.body-registro .formulario_registro1 {
+  width: 320px;
+  padding: 14px 18px;
+  background-color: #e0e0e0;
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+body.body-registro .formulario_registro2 {
+  width: 320px;
+  padding: 14px 18px;
+  background-color: #e0e0e0;
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+body .body-registro  .formulario_registro1:focus {
+  border-color: #a50000;
+  background-color: #f2f2f2;
+}
+
+body.body-registro .center-wrap {
+  text-align: center;
+  padding: 20px;
+}
+
+body.body-registro .form-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+body.body-registro .columns-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+body.body-registro .form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+}
+
+body.body-registro .boton-animado {
+  margin-top: 20px;
+}
+
+/* ===== ESTILOS PARA EL BOTÓN REGISTRAR ===== */
+body.body-registro .boton-animado {
+  position: relative;
+  padding: 12px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #555;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+body.body-registro .boton-animado:hover {
+  background-color: #c40000;
+}
+
+body.body-registro .boton-animado .brillo1 {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+body.body-registro .boton-animado:hover .brillo1 {
+  left: 125%;
+}
+
+body.body-registro .boton-animado .texto1 {
+  position: relative;
+  z-index: 2;
+}
+
+.regresar_registro{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+/* ===== SUBMENU USUARIOS EN DOS COLUMNAS (MISMO ESTILO QUE .submenu) ===== */
+body.app-body .submenu-dos {
+  /* MISMA BASE que .submenu */
+  list-style: none;
+  background-color: #d9d9d9;
+  padding: 0;
+  margin: 0;
+  border-left: 3px solid #c40000;
+  will-change: max-height, opacity, transform;
+
+  /* 2 COLUMNAS */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 0; /* sin huecos, estilo uniforme */
+  row-gap: 0;
+
+  /* Animación slide (cerrado) */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+body.app-body .submenu-dos li {
+  list-style: none;
+}
+
+/* MISMO ESTILO que body.app-body .submenu li a */
+body.app-body .submenu-dos li a {
+  padding: 10px 12px;      /* <-- CAMBIO CLAVE: antes 30px */
+  font-size: 0.85rem;      /* opcional: un poquito más pequeño */
+  font-weight: bold;
+  text-decoration: none;
+  color: #111;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bfbfbf;
+
+  /* para que el grid no recorte */
+  min-width: 0;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Hover igual al resto */
+body.app-body .submenu-dos li a:hover {
+  background-color: #c40000;
+  color: white;
+}
+
+/* ====== ABRIR SUBMENÚS CON CLICK (CLASE .open) ====== */
+body.app-body .item.open > .submenu {
+  max-height: 2000px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.app-body .item.open > .submenu-dos {
+  max-height: 2000px;      /* para que nunca recorte */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  padding: 0;              /* CLAVE: no metas padding aquí */
+}
+
+/*esitlos de registro de productos*/
+/* =========================================================
+   InveFact - Registro de Productos (AISLADO)
+   Solo aplica a: <body class="app-body regprod-body">
+========================================================= */
+
+
+body.regprod-body .regprod-card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form en “rejilla” como tu imagen (3 columnas) */
+body.regprod-body .regprod-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 22px;
+  margin-top: 10px;
+}
+
+/* Campos */
+body.regprod-body .regprod-field {
+  display: flex;
+  flex-direction: column;
+}
+
+body.regprod-body .regprod-field label {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #666;
+  font-weight: bold;
+}
+
+/* inputs/selects estilo “pastilla” gris */
+body.regprod-body .regprod-field input,
+body.regprod-body .regprod-field select {
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid #c6c6c6;
+  background: #dedede;
+  padding: 0 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #222;
+  outline: none;
+  text-transform: uppercase;
+}
+
+/* placeholder un poco más suave */
+body.regprod-body .regprod-field input::placeholder {
+  color: #777;
+  font-weight: 800;
+}
+
+/* foco */
+body.regprod-body .regprod-field input:focus,
+body.regprod-body .regprod-field select:focus {
+  border-color: #a50000;
+  box-shadow: 0 0 0 3px rgba(165, 0, 0, 0.12);
+}
+
+/* Botón guardar centrado abajo */
+body.regprod-body .regprod-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+body.regprod-body .regprod-btn-guardar {
+  background-color: #a50000;
+  color: #fff;
+  border: none;
+  padding: 14px 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.12s ease, background-color 0.2s ease;
+}
+
+body.regprod-body .regprod-btn-guardar:hover {
+  background-color: #c40000;
+  transform: translateY(-1px);
+}
+
+/* Brillo tipo tus botones */
+body.regprod-body .regprod-btn-guardar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.1)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+body.regprod-body .regprod-btn-guardar:hover::after {
+  left: 125%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  body.regprod-body .regprod-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  body.regprod-body .regprod-form {
+    grid-template-columns: 1fr;
+  }
+}
+/*FACTURA ELECTRONICA*/
+/* =========================================================
+   FACTURACIÓN ELECTRÓNICA (solo para esta pantalla)
+   body.app-body.factura-electronica-body
+========================================================= */
+
+body.app-body.factura-electronica-body .facte-head{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 15px 0 10px;
+}
+
+body.app-body.factura-electronica-body .facte-box{
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+body.app-body.factura-electronica-body .facte-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 14px;
+  margin-top: 10px;
+}
+
+body.app-body.factura-electronica-body .facte-pago-top{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+body.app-body.factura-electronica-body .facte-radio{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-weight: 700;
+}
+
+body.app-body.factura-electronica-body .facte-radio label{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+body.app-body.factura-electronica-body .facte-plazo{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+}
+
+body.app-body.factura-electronica-body .facte-pago-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 14px;
+  margin-top: 10px;
+}
+
+body.app-body.factura-electronica-body #observacion{
+  min-height: 52px;
+  resize: vertical;
+  padding: 10px 12px;
+}
+
+body.app-body.factura-electronica-body .facte-actions{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+body.app-body.factura-electronica-body .btn-eliminar{
+  background: #a50000;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+@media (max-width: 1024px){
+  body.app-body.factura-electronica-body .facte-head{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px){
+  body.app-body.factura-electronica-body .facte-grid,
+  body.app-body.factura-electronica-body .facte-pago-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   CONSULTA DE VENTAS (AISLADO)
+   Solo aplica a: body.app-body.consulta-ventas-body
+========================================================= */
+
+body.app-body.consulta-ventas-body .cv-title{
+  margin-bottom: 10px;
+}
+
+body.app-body.consulta-ventas-body .cv-card{
+  background: #fff;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.08);
+  padding: 14px;
+}
+
+body.app-body.consulta-ventas-body .cv-card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: 10px;
+}
+
+body.app-body.consulta-ventas-body .cv-h3{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+body.app-body.consulta-ventas-body .cv-filter{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr)) auto;
+  gap: 12px;
+  align-items:end;
+  background: #ededed;
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+body.app-body.consulta-ventas-body .cv-field{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+body.app-body.consulta-ventas-body .cv-field label{
+  font-size: 12px;
+  color:#444;
+  font-weight: 900;
+}
+
+body.app-body.consulta-ventas-body .cv-field input{
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #c6c6c6;
+  background: #f5f5f5;
+  padding: 0 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+body.app-body.consulta-ventas-body .cv-btnBuscar{
+  height: 42px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 8px;
+  background: #a50000;
+  color: #fff;
+  font-weight: 900;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+body.app-body.consulta-ventas-body .cv-btnBuscar:hover{
+  filter: brightness(.95);
+}
+
+body.app-body.consulta-ventas-body .cv-tableWrap{
+  margin-top: 12px;
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body.app-body.consulta-ventas-body .cv-table{
+  width: 100%;
+  border-collapse: collapse;
+  background: #f7f7f7;
+}
+
+body.app-body.consulta-ventas-body .cv-table th,
+body.app-body.consulta-ventas-body .cv-table td{
+  border: 1px solid #bdbdbd;
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 900;
+}
+
+body.app-body.consulta-ventas-body .cv-table th{
+  background: #d9d9d9;
+  letter-spacing: .5px;
+}
+
+body.app-body.consulta-ventas-body .cv-badge{
+  display:inline-block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color:#fff;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+body.app-body.consulta-ventas-body .cv-paid{ background:#1fa84a; }
+body.app-body.consulta-ventas-body .cv-pending{ background:#e0a300; }
+
+body.app-body.consulta-ventas-body .cv-actions{
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+}
+
+body.app-body.consulta-ventas-body .cv-icoBtn{
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 2px solid #bdbdbd;
+  background:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body.app-body.consulta-ventas-body .cv-icoBtn:hover{
+  filter: brightness(.97);
+}
+
+@media (max-width: 1100px){
+  body.app-body.consulta-ventas-body .cv-filter{
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+  body.app-body.consulta-ventas-body .cv-btnBuscar{
+    width: 100%;
+  }
+}
+/* ===== SUBMENU POR CLICK (NO HOVER) ===== */
+.menu .submenu {
+  display: none;
+}
+
+.menu .item.open > .submenu {
+  display: block;
+}
+/* ===== FIX SCROLL SIDEBAR ===== */
+.sidebar {
+  overflow-y: auto;
+}
+
+.menu {
+  overflow: visible;
+}
+/* ===== SUBMENU DOBLE COLUMNA (USUARIOS) ===== */
+.submenu-dos {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Asegurar que los links se vean bien */
+.submenu-dos li {
+  list-style: none;
+}
+
+.submenu-dos li a {
+  display: block;
+  width: 100%;
+}
+/* ===============================
+   SIDEBAR MINIMIZADO
+================================ */
+
+/* Sidebar reducido */
+body.app-body.sidebar-min .sidebar {
+  width: 60px;
+  transition: width 0.3s ease;
+}
+
+/* Ocultar textos */
+body.app-body.sidebar-min .menu a .texto {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Centrar iconos */
+body.app-body.sidebar-min .menu a {
+  justify-content: center;
+  padding: 14px 0;
+}
+
+/* Iconos más grandes */
+body.app-body.sidebar-min .menu a img,
+body.app-body.sidebar-min .menu a .iconos_barra {
+  width: 32px;
+  height: 32px;
+}
+
+/* ===== HOVER → EXPANDIR ===== */
+body.app-body.sidebar-min .sidebar:hover {
+  width: 220px;
+}
+
+/* Mostrar texto al hover */
+body.app-body.sidebar-min .sidebar:hover .menu a {
+  justify-content: flex-start;
+  padding: 14px 18px;
+}
+
+body.app-body.sidebar-min .sidebar:hover .menu a .texto {
+  opacity: 1;
+  width: auto;
+}
+
+/* Ajustar contenido principal */
+body.app-body.sidebar-min .main-content,
+body.app-body.sidebar-min .contenido {
+  margin-left: 60px;
+  transition: margin-left 0.3s ease;
+}
+
+body.app-body.sidebar-min .sidebar:hover ~ .main-content,
+body.app-body.sidebar-min .sidebar:hover ~ .contenido {
+  margin-left: 220px;
+}
+
+/* ======================================================
+   BOTÓN REGRESAR (HEADER) — ESTILO COMPLETO
+====================================================== */
+
+.btn-regresar-header {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 26px;
+  font-size: 1rem;
+  font-weight: bold;
+
+  background-color: #555;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  overflow: hidden;
+
+  transition: background-color 0.25s ease, opacity 0.2s ease;
+}
+
+/* Hover rojo */
+.btn-regresar-header:hover {
+  background-color: #c40000;
+}
+
+/* Texto encima del brillo */
+.btn-regresar-header .btn-texto {
+  position: relative;
+  z-index: 2;
+}
+
+/* Brillo animado */
+.btn-regresar-header .btn-brillo {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.1)
+  );
+
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+/* Activar brillo */
+.btn-regresar-header:hover .btn-brillo {
+  left: 125%;
+}
+
+/* Ocultar cuando sidebar se expande */
+body.app-body.sidebar-minimizada
+  .sidebar:hover
+  ~ .main-content
+  .btn-regresar-header {
+  opacity: 0;
+  pointer-events: none;
+}
+/* =========================================
+   OCULTAR BOTÓN REGRESAR AL EXPANDIR SIDEBAR
+   (SOLUCIÓN REAL)
+========================================= */
+
+body.app-body.sidebar-minimizada.sidebar-hover .btn-regresar-header {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+/*---------------------------APARTIR DE ACA INICIA ENTRADA DE PRODUCTOS----------------------------------------------------------*/
+
+/* ===============================
+   ENTRADA DE PRODUCTOS
+   =============================== */
+
+.entrada-producto-container {
+  background: #fff7f3;
+  padding: 25px 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* TÍTULO */
+.entrada-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* GRID PRINCIPAL */
+.entrada-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* COLUMNAS */
+.entrada-col {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* FORMULARIO */
+.entrada-form {
+  background: transparent;
+  padding: 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* INPUTS */
+.input-text,
+.input-fecha,
+.input-select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: #d9d9d9;
+  font-size: 14px;
+}
+
+.input-text::placeholder {
+  color: #777;
+}
+
+/* BUSCADOR */
+.input-search {
+  display: flex;
+  align-items: center;
+  background: #d9d9d9;
+  border-radius: 8px;
+  padding: 0 10px;
+}
+
+.input-search input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  padding: 8px 5px;
+}
+
+.search-icon {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ESTADO */
+.estado-box {
+  background: #dcdcdc;
+}
+
+.estado-title {
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.estado-box p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+/* OBSERVACIONES */
+.observaciones {
+  margin-top: 20px;
+}
+
+.textarea-observaciones {
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  background: #d9d9d9;
+  resize: none;
+}
+
+/* BOTÓN */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn-guardar {
+  background: #b30000;
+  color: #fff;
+  border: none;
+  padding: 10px 35px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.btn-guardar:hover {
+  background: #8e0000;
+}
+/*---------------------------------APARTIR DE ACA INVENTARIO-----------------------------------------------------------------------*/
+/* ===============================
+   INVENTARIO DE PRODUCTOS
+================================ */
+
+.inv-card {
+  background: #fff;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.08);
+}
+
+/* FILTROS */
+.inv-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr)) auto;
+  gap: 12px;
+  align-items: end;
+  background: #ededed;
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.inv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inv-field label {
+  font-size: 12px;
+  font-weight: 900;
+  color: #444;
+}
+
+.inv-input {
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #c6c6c6;
+  background: #f5f5f5;
+  padding: 0 10px;
+  font-weight: 800;
+}
+
+.inv-btn-buscar {
+  height: 42px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 8px;
+  background: #a50000;
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* TABLA */
+.inv-table-wrap {
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f7f7f7;
+}
+
+.inv-table th,
+.inv-table td {
+  border: 1px solid #bdbdbd;
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.inv-table th {
+  background: #d9d9d9;
+}
+
+.inv-activo {
+  color: #1fa84a;
+}
+
+.inv-inactivo {
+  color: #a50000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .inv-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* CONTENEDOR DE BÚSQUEDA */
+.input-search {
+  position: relative; /* referencia para la lista */
+}
+
+/* LISTA DE RESULTADOS */
+.lista-productos {
+  position: absolute;
+  top: 100%;            /* justo debajo del input */
+  left: 0;
+  width: 100%;
+  margin-top: 4px;      /* separación visual */
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  z-index: 20;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+/* EVITA LA RAYA SOBRE EL INPUT */
+.lista-productos {
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+/* ITEM DE LA LISTA */
+.item-producto {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.item-producto:hover {
+  background-color: #f2f2f2;
+}
+
+.item-producto:last-child {
+  border-bottom: none;
+}
+
+/* OCULTAR LISTA VACÍA */
+.lista-productos:empty {
+  display: none;
+}
+
+/* ICONO DE BÚSQUEDA */
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+/*facturacion pos segunda busqueda */
+/* ===== MODAL BUSCAR PRODUCTO ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 3000;
+}
+
+.modal-content {
+  background: #fff;
+  width: 420px;
+  max-width: 90%;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.modal-content .lista-productos {
+  position: static;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+#cerrar-modal {
+  margin-top: 10px;
+}
+
+
+/* =====================================================
+   USUARIOS / CLIENTES - CSS AISLADO
+   Scope: .uc-scope
+===================================================== */
+
+.uc-scope {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.uc-card {
+  width: 100%;
+  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #cfcfcf;
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* FILTROS */
+.uc-filtros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+/* BOTONES */
+.uc-botones {
+  display: flex;
+  gap: 10px;
+}
+
+.uc-btn {
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  background: #555;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.uc-btn:hover {
+  background: #c40000;
+}
+
+/* BUSCADOR */
+.uc-buscador {
+  position: relative;
+  width: 260px;
+}
+
+.uc-buscador input {
+  width: 100%;
+  padding: 10px 38px 10px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #d9d9d9;
+  font-weight: 700;
+  outline: none;
+}
+
+.uc-buscador span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+
+/* TABLA */
+.uc-tabla {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px 12px;
+}
+
+.uc-tabla th {
+  background: #efefef;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.uc-tabla td {
+  background: #8c8c8c;
+  color: #000;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ACCIONES */
+.uc-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.uc-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #d9d9d9;
+  font-size: 16px;
+  transition: transform 0.15s ease;
+}
+
+.uc-icon-btn:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .uc-filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .uc-buscador {
+    width: 100%;
+  }
+}
+
+/* ==================================================
+   FIX TEXTO CORTADO EN SUBMENÚS (FACTURA / USUARIOS)
+   NO AFECTA REGISTRAR CLIENTE
+================================================== */
+
+body.app-body .submenu-dos li a {
+  word-break: keep-all;     /* NO partir palabras */
+  overflow-wrap: normal;    /* comportamiento natural */
+  hyphens: none;            /* sin cortes raros */
+
+  font-size: 0.8rem;        /* un poco más pequeño */
+  line-height: 1.25;
+  text-align: center;
+
+  padding: 8px 10px;
+}
+
+/* =========================================================
+   MODIFICAR / ELIMINAR USUARIO - CLIENTE
+   Ajustes visuales para que coincidan con el diseño
+   NO afecta otras pantallas
+========================================================= */
+
+body.app-body.consulta-ventas-body .uc-form-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Buscador superior */
+body.app-body.consulta-ventas-body .uc-busqueda {
+  max-width: 360px;
+  margin: 0 auto 30px;
+}
+
+/* Inputs tipo “pastilla” grandes */
+body.app-body.consulta-ventas-body .uc-input {
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  border: none;
+  background: #d0cccc;
+  padding: 0 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Grid de campos (2 columnas) */
+body.app-body.consulta-ventas-body .uc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 60px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+/* Select mismo estilo */
+body.app-body.consulta-ventas-body .uc-input select,
+body.app-body.consulta-ventas-body select.uc-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Cpath fill='%23666' d='M0 0l8 8 8-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+/* Botón principal rojo */
+body.app-body.consulta-ventas-body .uc-btn-main {
+  margin-top: 25px;
+  background-color: #b30000;
+  color: #fff;
+  border: none;
+  padding: 14px 50px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+body.app-body.consulta-ventas-body .uc-btn-main:hover {
+  background-color: #8e0000;
+}
+
+/* Caja confirmación eliminar */
+body.app-body.consulta-ventas-body .uc-confirm-box {
+  background: #e6e6e6;
+  border-radius: 14px;
+  padding: 24px 30px;
+  text-align: left;
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 16px;
+}
+
+/* Botones eliminar / cancelar */
+body.app-body.consulta-ventas-body .uc-actions {
+  display: flex;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: 25px auto 0;
+}
+
+body.app-body.consulta-ventas-body .uc-actions button {
+  min-width: 180px;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* =====================================================
+   REPORTE DE STOCK – ESTILOS ENCAPSULADOS
+   Prefijo: stk-
+   NO afecta otras pantallas
+===================================================== */
+
+.stk-scope {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARD BASE */
+.stk-card {
+  background: #f1f1f1;
+  border-radius: 10px;
+  border: 2px solid #cfcfcf;
+  padding: 16px;
+}
+
+/* FILTROS */
+.stk-filtros {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.stk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stk-field label {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* BUSCADOR */
+.stk-search {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.stk-search input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-weight: 700;
+}
+
+.stk-search span {
+  opacity: 0.6;
+}
+
+/* SELECT */
+.stk-field select {
+  height: 38px;
+  border-radius: 8px;
+  border: none;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+/* BOTÓN */
+.stk-btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.stk-btn-buscar {
+  background: #a50000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 26px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.stk-btn-buscar:hover {
+  background: #8e0000;
+}
+
+/* TABLA */
+.stk-table-wrap {
+  background: #e0e0e0;
+}
+
+.stk-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 14px 12px;
+}
+
+.stk-table th {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.stk-table td {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* BADGES DE STOCK */
+.stk-badge {
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 900;
+}
+
+.stk-ok {
+  background: #6fdc6f;
+}
+
+.stk-mid {
+  background: #f1a85b;
+}
+
+.stk-low {
+  background: #d92c2c;
+  color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .stk-filtros {
+    grid-template-columns: 1fr;
+  }
+}
+/* ======================================================
+   REPORTE VENTAS DIARIAS
+   Scope: .rvd-scope
+====================================================== */
+
+.rvd-scope {
+  width: 100%;
+}
+
+.rvd-card {
+  background: #ededed;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.rvd-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.rvd-filtros {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.rvd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rvd-field label {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rvd-field input {
+  height: 38px;
+  border-radius: 8px;
+  border: 2px solid #c6c6c6;
+  background: #f5f5f5;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+.rvd-table-wrap {
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rvd-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f7f7f7;
+}
+
+.rvd-table th,
+.rvd-table td {
+  border: 1px solid #bdbdbd;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.rvd-table th {
+  background: #d9d9d9;
+}
+/* ======================================================
+   VENTAS POR PRODUCTOS
+   Scope: .rvp-scope
+====================================================== */
+
+.rvp-scope {
+  width: 100%;
+}
+
+.rvp-card {
+  background: #ededed;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.rvp-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.rvp-filtros {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.rvp-search {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  border: 2px solid #c6c6c6;
+}
+
+.rvp-search input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-weight: 700;
+}
+
+.rvp-search span {
+  opacity: 0.6;
+}
+
+.rvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rvp-field label {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rvp-field input {
+  height: 38px;
+  border-radius: 8px;
+  border: 2px solid #c6c6c6;
+  background: #f5f5f5;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+.rvp-table-wrap {
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rvp-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f7f7f7;
+}
+
+.rvp-table th,
+.rvp-table td {
+  border: 1px solid #bdbdbd;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.rvp-table th {
+  background: #d9d9d9;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rvp-filtros {
+    grid-template-columns: 1fr;
+  }
+}
+/* ======================================================
+   REPORTES CONTABLES
+   Scope: .rvc-scope
+====================================================== */
+
+.rvc-scope {
+  width: 100%;
+}
+
+.rvc-card {
+  background: #ededed;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.rvc-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.rvc-filtros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.rvc-select {
+  height: 38px;
+  border-radius: 8px;
+  border: 2px solid #c6c6c6;
+  background: #f5f5f5;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+.rvc-btn {
+  background: #a50000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.rvc-btn:hover {
+  background: #8e0000;
+}
+
+.rvc-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f7f7f7;
+  margin-bottom: 16px;
+}
+
+.rvc-table th,
+.rvc-table td {
+  border: 1px solid #bdbdbd;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.rvc-table th {
+  background: #d9d9d9;
+}
+
+.rvc-resumen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.rvc-resumen div {
+  background: #e0e0e0;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.rvc-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rvc-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .rvc-actions {
+    flex-direction: column;
+  }
+}
+
+
+/* ======================================================
+   CLIENTES MOROSOS
+   Scope: .cm-scope
+====================================================== */
+
+.cm-scope {
+  width: 100%;
+}
+
+.cm-card {
+  background: #e0e0e0;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.cm-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.cm-subtitle {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.cm-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ededed;
+}
+
+.cm-table th,
+.cm-table td {
+  border: 1px solid #8c8c8c;
+  padding: 12px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.cm-table th {
+  background: #d0d0d0;
+}
+
+.cm-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 28px;
+  background: #2d7bdc;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* ======================================================
+   ESTADO DE CUENTA
+   Scope: .ec-scope
+====================================================== */
+
+.ec-scope {
+  width: 100%;
+}
+
+.ec-card {
+  background: #e0e0e0;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.ec-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ec-search input {
+  flex: 1;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 16px;
+  background: #d9d9d9;
+  font-weight: 800;
+}
+
+.ec-search button {
+  padding: 10px 26px;
+  border-radius: 20px;
+  border: none;
+  background: #2d7bdc;
+  color: #fff;
+  font-weight: 900;
+}
+
+.ec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ec-table td {
+  border: 1px solid #8c8c8c;
+  padding: 12px;
+  font-weight: 800;
+}
+
+.ec-btn {
+  display: block;
+  margin: 18px auto 0;
+  background: #2d7bdc;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: 900;
+}
+
+/* ======================================================
+   ABONO DE CARTERA
+   Scope: .ac-scope
+====================================================== */
+
+.ac-scope {
+  width: 100%;
+}
+
+.ac-card {
+  background: #e0e0e0;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 18px;
+}
+
+.ac-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ac-search input {
+  flex: 1;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 16px;
+  background: #d9d9d9;
+  font-weight: 800;
+}
+
+.ac-search button {
+  background: #2d7bdc;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-weight: 900;
+}
+
+.ac-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.ac-table th,
+.ac-table td {
+  border: 1px solid #8c8c8c;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.ac-note {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.ac-pay {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ac-pay input {
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  background: #d9d9d9;
+  font-weight: 800;
+}
+
+.ac-btn {
+  display: block;
+  margin-left: auto;
+  background: #2d7bdc;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-weight: 900;
+}
+
+/* ======================================================
+   PAGO DE CARTERA
+   Scope: .pc-scope
+====================================================== */
+
+.pc-scope {
+  width: 100%;
+}
+
+.pc-card {
+  background: #e0e0e0;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 18px;
+}
+
+.pc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.pc-table th,
+.pc-table td {
+  border: 1px solid #8c8c8c;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.pc-pay {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pc-pay input {
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  background: #d9d9d9;
+}
+
+.pc-btn {
+  margin-left: auto;
+  margin-top: 12px;
+  background: #2d7bdc;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: 900;
+}
+
+/* ======================================================
+   HISTORIAL DE PAGOS
+   Scope: .hp-scope
+====================================================== */
+
+.hp-scope {
+  width: 100%;
+}
+
+.hp-card {
+  background: #e0e0e0;
+  border-radius: 10px;
+  border: 2px solid #bfbfbf;
+  padding: 18px;
+}
+
+.hp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hp-table th,
+.hp-table td {
+  border: 1px solid #8c8c8c;
+  padding: 12px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.hp-table th {
+  background: #d0d0d0;
+}
+
+/* ======================================================
+   DATOS DE LA EMPRESA
+   Scope: .de-scope
+====================================================== */
+
+.de-card {
+  background: #ededed;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.de-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.de-subtitle {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.de-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.de-form label {
+  font-weight: 800;
+  margin-top: 10px;
+  display: block;
+}
+
+.de-form input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #d9d9d9;
+  font-weight: 700;
+}
+
+.de-logo {
+  text-align: center;
+}
+
+.de-logo img {
+  width: 180px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.de-btn-primary {
+  display: block;
+  margin: 20px auto 0;
+  background: #a50000;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+.de-btn-secondary {
+  background: #cfcfcf;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+/* ======================================================
+   CONFIGURACIÓN DISPOSITIVOS
+   Scope: .cd-scope
+====================================================== */
+
+.cd-card {
+  background: #ededed;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.cd-section h3 {
+  margin-bottom: 10px;
+}
+
+.cd-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.cd-status.ok {
+  background: #6df36d;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-weight: 900;
+}
+
+.cd-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.cd-btn-blue {
+  background: #3aa1d8;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.cd-divider {
+  border-top: 2px solid #999;
+  margin: 20px 0;
+}
+
+/* ======================================================
+   COPIA DE SEGURIDAD
+   Scope: .cs-scope
+====================================================== */
+
+.cs-card {
+  background: #ededed;
+  border: 2px solid #bfbfbf;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.cs-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.cs-btn-green {
+  display: block;
+  margin: 15px auto;
+  background: #6df36d;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+.cs-subtitle {
+  margin: 14px 0 8px;
+  font-weight: 900;
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 14px;
+}
+
+.cs-table th,
+.cs-table td {
+  border: 1px solid #8c8c8c;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.cs-badge.ok {
+  background: #6df36d;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+.cs-btn-blue {
+  background: #3aa1d8;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-weight: 800;
+}
+
+.cs-config {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cs-config select {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: #cfcfcf;
+  font-weight: 700;
+}
+/* ============================= */
+/* BOTÓN LUPA BUSQUEDA (SEGURO) */
+/* ============================= */
+
+/* SOLO cuando la lupa es un botón */
+button.search-icon {
+  pointer-events: auto;      /* permite click */
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  line-height: 1;
+}
+
+/* Evita efectos raros al hacer focus */
+button.search-icon:focus {
+  outline: none;
+}
+
+/* Hover sutil (opcional, no cambia color) */
+button.search-icon:hover {
+  opacity: 0.8;
+}
+
+/* ===============================
+   CONTEXTO DEL MÓDULO
+=============================== */
+
+.modulo-contexto {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.modulo-contexto h3 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ===============================
+   SELECTOR USUARIO / CLIENTE
+=============================== */
+
+.selector-tipo {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.selector-tipo select {
+  max-width: 260px;
+}
+
+/* ===============================
+   BOTÓN MODIFICAR
+=============================== */
+
+.uc-btn-main {
+  margin-top: 20px;
+}
+
+/* =====================================================
+   MODALES PROFESIONALES – FACTURACIÓN ELECTRÓNICA
+   Estilo moderno, limpio y empresarial
+===================================================== */
+
+.factura-electronica-body .modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55); /* azul oscuro elegante */
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Caja principal */
+.factura-electronica-body .modal-content {
+  background: #ffffff;
+  width: 460px;
+  max-width: 92%;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  animation: modalProIn 0.25s ease;
+  border: 1px solid #e5e7eb;
+}
+
+/* Encabezado */
+.factura-electronica-body .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 12px;
+}
+
+.factura-electronica-body .modal-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: 0.3px;
+}
+
+.factura-electronica-body .modal-header button {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  color: #334155;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.factura-electronica-body .modal-header button:hover {
+  background: #e2e8f0;
+  transform: scale(1.05);
+}
+
+/* Input búsqueda */
+.factura-electronica-body .modal-content input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 12px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.factura-electronica-body .modal-content input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Lista resultados */
+.factura-electronica-body .modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Item */
+.factura-electronica-body .modal-content ul li {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.15s, color 0.15s;
+}
+
+.factura-electronica-body .modal-content ul li:not(:last-child) {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.factura-electronica-body .modal-content ul li:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* Scroll elegante */
+.factura-electronica-body .modal-content ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.factura-electronica-body .modal-content ul::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.factura-electronica-body .modal-content ul::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animación */
+@keyframes modalProIn {
+  from {
+    transform: translateY(10px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="productos">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>ENTRADA O SALIDA DE PRODUCTOS</p>
+        </div>
+        <!-- CONTENEDOR PRINCIPAL -->
+        <div class="entrada-producto-container">
+          <h3 class="entrada-title">Información del movimiento:</h3>
+
+          <div class="entrada-grid">
+            <!-- COLUMNA IZQUIERDA -->
+            <div class="entrada-col entrada-form">
+              <div class="form-group">
+                <label>Fecha del movimiento:</label>
+                <input type="date" class="input-fecha" />
+              </div>
+
+              <div class="form-group">
+                <label>Tipo de mivimiento:</label>
+                <select class="input-select">
+                  <option selected disabled>Seleccione tipo</option>
+                  <option>Compra</option>
+                  <option>Venta</option>
+                  <option>Mermas</option>
+                  <option>Perdidas</option>
+                  <option>Devolución</option>
+                  <option>Ajuste</option>
+                </select>
+              </div>
+
+              <div class="form-group ajuste-tipo" style="display:none">
+                   <label>Tipo de ajuste:</label>
+                   <select class="input-ajuste">
+                       <option selected disabled>Seleccione ajuste</option>
+                       <option value="sumar">Sumar stock</option>
+                       <option value="restar">Restar stock</option>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                <label>Producto:</label>
+                <div class="input-search">
+                  <input type="text" placeholder="Buscar" class="input-text" />
+                  <ul class="lista-productos"></ul>
+                  <span class="search-icon">🔍</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Cantidad a ingresar:</label>
+                <input
+                  type="number"
+                  placeholder="Ingrese cantidad"
+                  class="input-text"
+                />
+              </div>
+            </div>
+
+            <!-- ESTADO ACTUAL -->
+            <div class="entrada-col estado-box">
+              <h4 class="estado-title">Estado actual</h4>
+
+              <p><strong>Nombre del producto:</strong> cañon</p>
+              <p><strong>Código:</strong> 001</p>
+              <p><strong>Cantidad:</strong> 15 kg</p>
+              <p><strong>Precio:</strong> 25.000</p>
+            </div>
+
+            <!-- NUEVO ESTADO -->
+            <div class="entrada-col estado-box">
+              <h4 class="estado-title">Nuevo estado</h4>
+
+              <p><strong>Nombre del producto:</strong> cañon</p>
+              <p><strong>Código:</strong> 001</p>
+              <p><strong>Cantidad:</strong> 50 kg</p>
+              <p><strong>Precio:</strong> 27.000</p>
+            </div>
+          </div>
+
+          <!-- OBSERVACIONES -->
+          <div class="form-group observaciones">
+            <label>Observaciones:</label>
+            <textarea class="textarea-observaciones"></textarea>
+          </div>
+
+          <!-- RESUMEN DEL MOVIMIENTO -->
+          <div class="resumen-movimiento" style="display: none">
+            <h3>📦 Resumen del movimiento</h3>
+
+            <p><strong>Producto:</strong> <span id="res-nombre"></span></p>
+            <p><strong>Stock actual:</strong> <span id="res-actual"></span></p>
+            <p>
+              <strong>Movimiento:</strong> <span id="res-movimiento"></span>
+            </p>
+            <p><strong>Stock final:</strong> <span id="res-final"></span></p>
+
+            <div class="confirmacion">
+              <p>❓ ¿Deseas realizar esta entrada o salida?</p>
+              <button id="btn-cancelar" class="btn-cancelar">CANCELAR</button>
+            </div>
+          </div>
+
+          <!-- BOTÓN -->
+          <div class="btn-container">
+            <button id="btn-guardar" class="btn-guardar">GUARDAR</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/entrada-producto.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+
+  </body>
+</html>

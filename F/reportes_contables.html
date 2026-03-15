@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="reportes">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>REPORTES CONTABLES</p>
+        </div>
+
+        <div class="rvc-scope">
+          <div class="rvc-card">
+            <div class="rvc-filtros">
+              <span>Fecha: últimos 3 meses</span>
+
+              <select class="rvc-select">
+                <option>Todos</option>
+                <option>Ingresos</option>
+                <option>Egresos</option>
+              </select>
+
+              <button class="rvc-btn">Generar Reporte</button>
+            </div>
+
+            <table class="rvc-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Descripción / Tipo</th>
+                  <th>Ingresos</th>
+                  <th>Egresos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>05/01/2025</td>
+                  <td>Venta diaria</td>
+                  <td>$1.200.000</td>
+                  <td>$0</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="rvc-resumen">
+              <div>
+                <strong>Estado de Resultados</strong>
+                <p>Ingresos: $5.200.000</p>
+                <p>Gastos: $2.100.000</p>
+                <p>Utilidad Neta: $3.100.000</p>
+              </div>
+
+              <div>
+                <strong>Balance General</strong>
+                <p>Activos</p>
+                <p>Pasivos</p>
+                <p>Patrimonio</p>
+              </div>
+            </div>
+
+            <div class="rvc-actions">
+              <button class="rvc-btn">Descargar PDF</button>
+              <button class="rvc-btn">Exportar Excel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>.
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>

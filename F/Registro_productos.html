@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Registro de Productos</title>
+
+    <!-- CSS general -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <body class="app-body regprod-body" data-permiso="productos">
+
+    <div class="container">
+      <!-- ================= SIDEBAR ================= -->
+      <div id="sidebar-container"></div>
+
+      <!-- ============== CONTENIDO PRINCIPAL ============== -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+
+        <!-- TÍTULO -->
+        <div class="welcome-section regprod-welcome">
+          <h2>InveFact</h2>
+          <p>REGISTRO DE PRODUCTOS</p>
+        </div>
+
+        <!-- TARJETA -->
+        <div class="regprod-card">
+          <h3 class="section-title">Datos del Producto</h3>
+
+          <form
+            class="regprod-form"
+            id="form-registro-producto"
+            autocomplete="off"
+          >
+            <!-- FILA 1 -->
+            <div class="regprod-field">
+              <label for="codigo">Código</label>
+              <input
+                id="codigo"
+                name="codigo"
+                type="text"
+                placeholder="DIGITA CÓDIGO"
+                required
+              />
+            </div>
+
+            <div class="regprod-field">
+              <label for="nombre">Nombre del producto</label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                placeholder="NOMBRE DEL PRODUCTO"
+                required
+              />
+            </div>
+
+            <div class="regprod-field">
+              <label for="estado">Estado</label>
+              <select id="estado" name="estado" required>
+                <option value="" selected disabled>ESTADO</option>
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+              </select>
+            </div>
+
+            <!-- FILA 2 -->
+            <div class="regprod-field">
+              <label for="unidad">Unidad de medida</label>
+              <select id="unidad" name="unidad" required>
+                <option value="" selected disabled>UNIDAD DE MEDIDA</option>
+                <option value="UND">UND</option>
+                <option value="KG">KG</option>
+                <option value="LT">LT</option>
+              </select>
+            </div>
+
+            <div class="regprod-field">
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria" required>
+                <option value="" selected disabled>CATEGORÍA</option>
+                <option value="RES">RES</option>
+                <option value="CERDO">CERDO</option>
+                <option value="POLLO">POLLO</option>
+                <option value="PESCADO">PESCADO</option>
+                <option value="CHARCUTERIA">CHARCUTERIA</option>
+                <option value="OTROS">OTROS</option>
+              </select>
+            </div>
+
+            <div class="regprod-field">
+              <label for="ubicacion">Ubicación</label>
+              <select id="ubicacion" name="ubicacion" required>
+                <option value="" selected disabled>UBICACIÓN</option>
+                <option value="CAVA_REFRI">CAVA REFRIGERACIÓN</option>
+                <option value="CAVA_CONGE">CAVA CONGELACIÓN</option>
+                <option value="BODEGA">BODEGA</option>
+              </select>
+            </div>
+
+            <!-- FILA 3 -->
+            <div class="regprod-field">
+              <label for="cantidad">Cantidad</label>
+              <input
+                id="cantidad"
+                name="cantidad"
+                type="number"
+                min="0"
+                step="1"
+                placeholder="CANTIDAD"
+                required
+              />
+            </div>
+
+            <div class="regprod-field">
+              <label for="precio_compra">Precio de compra</label>
+              <input
+                id="precio_compra"
+                name="precio_compra"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="PRECIO DE COMPRA"
+                required
+              />
+            </div>
+
+            <div class="regprod-field">
+              <label for="precio_venta">Precio de venta</label>
+              <input
+                id="precio_venta"
+                name="precio_venta"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="PRECIO DE VENTA"
+                required
+              />
+            </div>
+
+            <div class="regprod-actions">
+              <button type="submit" class="regprod-btn-guardar">GUARDAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ============ FIN MAIN CONTENT ============ -->
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/registrosproductos.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>

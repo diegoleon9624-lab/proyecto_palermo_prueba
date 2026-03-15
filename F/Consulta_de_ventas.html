@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="facturas">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>CONSULTA DE VENTAS</p>
+        </div>
+
+        <!-- Filtro -->
+        <div class="cv-card">
+          <div class="cv-card-head">
+            <h3 class="cv-h3">Filtrar Ventas:</h3>
+          </div>
+
+          <form class="cv-filter" id="cvFilterForm">
+            <div class="cv-field">
+              <label for="cvFechaInicio">Fecha inicio</label>
+              <input type="date" id="cvFechaInicio" />
+            </div>
+
+            <div class="cv-field">
+              <label for="cvFechaFin">Fecha fin</label>
+              <input type="date" id="cvFechaFin" />
+            </div>
+
+            <div class="cv-field">
+              <label for="cvCliente">Cliente</label>
+              <input type="text" id="cvCliente" placeholder="NOMBRE CLIENTE" />
+            </div>
+
+            <div class="cv-field">
+              <label for="cvFactura">N° factura</label>
+              <input type="text" id="cvFactura" placeholder="N° DE FACTURA" />
+            </div>
+
+            <button class="cv-btnBuscar" type="submit">Buscar</button>
+          </form>
+
+          <!-- Tabla -->
+          <div class="cv-tableWrap">
+            <table class="cv-table">
+              <thead>
+                <tr>
+                  <th>N° FACTURA</th>
+                  <th>FECHA</th>
+                  <th>CLIENTE</th>
+                  <th>VENDEDOR</th>
+                  <th>TOTAL</th>
+                  <th>ESTADO</th>
+                  <th>ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody id="cvTbody">
+                <!-- JS render -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer> </script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+    <script src="logicajs/consultasventas.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Modificar</title>
+
+    <!-- Estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <body class="app-body consulta-ventas-body" data-permiso="clientes">
+    <div class="container">
+      <!-- Sidebar -->
+      <div id="sidebar-container"></div>
+
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- Header -->
+        <div id="header-container"></div>
+
+        <!-- TÍTULO GENERAL -->
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>MODIFICAR</p>
+        </div>
+
+        <!-- CONTEXTO DEL MÓDULO -->
+        <div class="modulo-contexto">
+          <h3 id="titulo-modulo">MODIFICAR USUARIOS</h3>
+        </div>
+
+        <div class="uc-form-wrap">
+          <!-- SELECTOR USUARIO / CLIENTE -->
+          <div class="selector-tipo">
+            <select class="uc-input" id="filtro_tipo">
+              <option value="usuario">Usuarios</option>
+              <option value="cliente">Clientes</option>
+            </select>
+          </div>
+
+          <!-- BUSQUEDA -->
+          <div class="uc-busqueda input-search">
+            <input
+              class="uc-input"
+              id="identificacion"
+              placeholder="Digita la cédula "
+            />
+            <button
+              type="button"
+              class="search-icon"
+              id="btnBuscar"
+              aria-label="Buscar"
+            >
+              🔍
+            </button>
+          </div>
+
+          <!-- ========================= -->
+          <!-- FORMULARIO -->
+          <!-- ========================= -->
+          <div class="uc-grid">
+
+            <!-- ===== CAMPOS COMUNES ===== -->
+            <input class="uc-input" id="nombres" placeholder="Nombres" />
+            <input class="uc-input" id="apellidos" placeholder="Apellidos" />
+            <input class="uc-input" id="telefono" placeholder="Teléfono" />
+            <input class="uc-input" id="correo" placeholder="Correo electrónico" />
+
+            <!-- ===== CLIENTES ===== -->
+            <input
+              class="uc-input"
+              id="cedula_o_nit"
+              placeholder="Cédula / NIT"
+              data-tipo="cliente"
+            />
+
+            <input
+              class="uc-input"
+              id="direccion"
+              placeholder="Dirección"
+              data-tipo="cliente"
+            />
+
+            <select
+              class="uc-input"
+              id="tipo_cliente"
+              data-tipo="cliente"
+            >
+              <option value="">Tipo de cliente</option>
+              <option value="contado">CONTADO</option>
+              <option value="credito">CRÉDITO</option>
+            </select>
+
+            <input
+              class="uc-input"
+              id="cupo"
+              placeholder="Cupo"
+              data-tipo="cliente"
+            />
+
+            <input
+              class="uc-input"
+              id="fecha_registro_cliente"
+              placeholder="Fecha de registro"
+              data-tipo="cliente"
+              disabled
+            />
+
+            <!-- ===== USUARIOS ===== -->
+            <input
+              class="uc-input"
+              id="cedula_usuario"
+              placeholder="Cédula"
+              data-tipo="usuario"
+            />
+
+            <input
+              class="uc-input"
+              id="rol"
+              placeholder="Rol"
+              data-tipo="usuario"
+            />
+
+            <input
+              class="uc-input"
+              id="usuario"
+              placeholder="Usuario"
+              data-tipo="usuario"
+            />
+
+            <input
+              class="uc-input"
+              id="contrasena"
+              placeholder="Contraseña (encriptada)"
+              data-tipo="usuario"
+              disabled
+            />
+
+            <input
+              class="uc-input"
+              id="estado"
+              placeholder="Estado"
+              data-tipo="usuario"
+              disabled
+            />
+
+          </div>
+
+          <!-- BOTONES DE ACCIÓN -->
+          <div class="uc-acciones">
+            <button type="button" class="uc-btn-main" id="btnGuardar">
+              Modificar
+            </button>
+
+            <button type="button" class="uc-btn-main" id="btnLimpiar">
+              Limpiar campos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS EXISTENTES -->
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+    <!-- JS DE LÓGICA -->
+    <script src="logicajs/busqueda.js" defer></script>
+  </body>
+</html>

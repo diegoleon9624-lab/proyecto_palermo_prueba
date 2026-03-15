@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="configuracion" >
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>CONFIGURACION DE DISPOSITIVOS</p>
+        </div>
+
+        <div class="cd-scope">
+          <div class="cd-card">
+
+            <div class="cd-section">
+              <h3>Impresora de tickets</h3>
+
+              <div class="cd-row">
+                <span>Impresora térmica A1234</span>
+                <span class="cd-status ok">Conectada</span>
+              </div>
+
+              <div class="cd-actions">
+                <button class="cd-btn-blue">Probar impresora</button>
+                <button class="cd-btn-blue">Configurar ⚙️</button>
+              </div>
+            </div>
+
+            <div class="cd-divider"></div>
+
+            <div class="cd-section">
+              <h3>Caja registradora</h3>
+
+              <div class="cd-row">
+                <span>Caja Principal</span>
+                <span class="cd-status ok">Conectada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>

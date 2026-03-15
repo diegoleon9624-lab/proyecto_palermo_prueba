@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="estilosD1.css" />
+    <!--enlaza la hoja de estilos -->
+  </head>
+  <body class="login-body">
+    <div class="center-wrap">
+      <img class="imagen_principal" src="imganes/logo1.png" alt="" />
+
+      <h1 class="titulo_inicio">InveFact</h1>
+
+      <!-- 🔐 LOGIN REAL -->
+      <form id="loginForm">
+        <input
+          type="text"
+          class="campo"
+          id="usuario"
+          placeholder=" Digita el usuario"
+          required
+        />
+
+        <input
+          type="password"
+          class="campo"
+          id="contrasena"
+          placeholder=" Digita la contraseña"
+          required
+        />
+
+        <button type="submit" class="boton-animado">
+          <span class="brillo"></span>
+          <span class="texto">Ingresar</span>
+        </button>
+      </form>
+
+      <div class="recordar_o_registrar">
+        <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+        <a href="registro.html" class="link">Registrarse</a>
+      </div>
+    </div>
+
+    <!-- 🔥 lógica del login -->
+    <script src="logicajs/login.js"></script>
+  </body>
+</html>

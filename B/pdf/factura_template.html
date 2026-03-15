@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Factura - InveFact</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .centrado {
+        text-align: center;
+      }
+
+      /* ✅ ESTILO FORZADO PARA EL LOGO */
+      .logo {
+        display: block;
+        margin: 0 auto 6px auto;
+        width: 120px;        /* 🔑 CLAVE */
+        max-width: 120px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .empresa {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .datos-empresa,
+      .datos-cliente,
+      .datos-factura {
+        margin-top: 8px;
+      }
+
+      hr {
+        margin: 10px 0;
+        border: none;
+        border-top: 1px dashed #000;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      .total {
+        text-align: right;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .pago {
+        margin-top: 8px;
+        font-size: 11px;
+      }
+
+      .footer {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ========================= -->
+    <!-- ENCABEZADO EMPRESA -->
+    <!-- ========================= -->
+    <div class="centrado">
+
+      <!-- ✅ LOGO CON TAMAÑO FORZADO -->
+      <img
+        src="{{LOGO}}"
+        class="logo"
+        alt="Logo Empresa"
+      />
+
+      <div class="empresa">{{EMPRESA}}</div>
+
+      <div class="datos-empresa">
+        {{DIRECCION_EMPRESA}}<br />
+        Tel: {{TELEFONO_EMPRESA}}
+      </div>
+
+      <h2>INVEFACT</h2>
+    </div>
+
+    <hr />
+
+    <!-- ========================= -->
+    <!-- DATOS DE LA FACTURA -->
+    <!-- ========================= -->
+    <div class="datos-factura">
+      <strong>Factura:</strong> {{TIPO}}<br />
+      <strong>Número:</strong> {{NUMERO}}<br />
+      <strong>Fecha:</strong> {{FECHA_ES}}<br />
+      <strong>Vendedor:</strong> {{VENDEDOR}}
+    </div>
+
+    <hr />
+
+    <!-- ========================= -->
+    <!-- DATOS DEL CLIENTE -->
+    <!-- ========================= -->
+    <div class="datos-cliente">
+      <strong>Cliente:</strong> {{CLIENTE}}<br />
+      <strong>Documento:</strong> {{DOCUMENTO}}<br />
+      <strong>Dirección:</strong> {{DIRECCION}}
+    </div>
+
+    <hr />
+
+    <!-- ========================= -->
+    <!-- DETALLE DE PRODUCTOS -->
+    <!-- ========================= -->
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Producto</th>
+          <th>Cant.</th>
+          <th>Precio</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{DETALLE}}
+      </tbody>
+    </table>
+
+    <!-- ========================= -->
+    <!-- TOTAL -->
+    <!-- ========================= -->
+    <div class="total">TOTAL: $ {{TOTAL}}</div>
+
+    <!-- ========================= -->
+    <!-- MÉTODO DE PAGO -->
+    <!-- ========================= -->
+    <div class="pago">
+      <strong>Método de pago:</strong> {{METODO_PAGO}}<br />
+      <strong>Efectivo:</strong> $ {{PAGO_EFECTIVO}}<br />
+      <strong>Electrónico:</strong> $ {{PAGO_ELECTRONICO}}<br />
+      <strong>Cambio:</strong> $ {{CAMBIO}}
+    </div>
+
+    <hr />
+
+    <!-- ========================= -->
+    <!-- PIE -->
+    <!-- ========================= -->
+    <div class="footer">
+      Gracias por su compra<br />
+      Sistema InveFact
+    </div>
+  </body>
+</html>

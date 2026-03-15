@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="cartera">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>CLIENTES MOROSOS</p>
+        </div>
+        <div class="cm-scope">
+          <div class="cm-card">
+            <h3 class="cm-subtitle">Saldos Pendientes</h3>
+
+            <table class="cm-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Saldo Pendiente</th>
+                  <th>Días Mora</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Carlos Marín</td>
+                  <td>$1.200.000</td>
+                  <td>15</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="cm-btn">Enviar Alerta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>

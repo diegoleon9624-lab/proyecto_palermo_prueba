@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InveFact - Consulta de Ventas</title>
+
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="estilosD1.css" />
+  </head>
+
+  <!-- ✅ AISLADO: esta clase activa solo el CSS/JS de esta pantalla -->
+  <body class="app-body consulta-ventas-body" data-permiso="reportes">
+    <div class="container">
+      <!-- Sidebar cargado dinámicamente -->
+      <div id="sidebar-container"></div>
+      <!-- MAIN -->
+      <div class="main-content">
+        <!-- ENCABEZADO DINÁMICO -->
+        <div id="header-container"></div>
+        <div class="welcome-section cv-title">
+          <h2>InveFact</h2>
+          <p>VENTAS POR PRODUCTOS</p>
+        </div>
+
+        <div class="rvp-scope">
+          <div class="rvp-card">
+            <h3 class="rvp-title"></h3>
+
+            <div class="rvp-filtros">
+              <div class="rvp-search">
+                <input
+                  type="text"
+                  placeholder="Digita el código del producto"
+                />
+                <span>🔍</span>
+              </div>
+
+              <div class="rvp-field">
+                <label>Desde</label>
+                <input type="date" />
+              </div>
+              <div class="rvp-field">
+                <label>Hasta</label>
+                <input type="date" />
+              </div>
+            </div>
+
+            <div class="rvp-table-wrap">
+              <table class="rvp-table">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Cantidad vendida</th>
+                    <th>Total facturado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Cañón</td>
+                    <td>Cerdo</td>
+                    <td>150 Kg</td>
+                    <td>$3.750.000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="logicajs/loadSidebar.js" defer></script>
+    <script src="logicajs/loadheader.js" defer></script>
+    <script src="logicajs/sidebar.js" defer></script>
+    <script src="logicajs/regresar.js" defer></script>
+    <script src="logicajs/header.js"></script>
+    <script src="logicajs/roles.js"></script>
+    <script src="logicajs/guard.js"></script>
+  </body>
+</html>
