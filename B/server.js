@@ -2,15 +2,19 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
+// servir archivos del frontend
+app.use(express.static(path.join(__dirname, "../F")));
 
 app.use(cors());
 app.use(express.json());
 
+
 // 🔍 prueba base
 app.get("/", (req, res) => {
-  res.send("API InveFact funcionando 🚀");
+  res.sendFile(path.join(__dirname, "../F/index.html"));
 });
 
 // 🔥 IMPORTAR RUTAS
